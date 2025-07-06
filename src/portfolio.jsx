@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, User, Code, GraduationCap, Mail, Phone, MapPin, Github, Linkedin, Facebook, Instagram, Download } from 'lucide-react';
+import { Menu, X, User, Code, GraduationCap, Mail, Phone, MapPin, Github, Linkedin, Facebook, Instagram, Download, Play, Pause } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import toast from 'react-hot-toast';
 
@@ -9,8 +9,42 @@ const Portfolio = () => {
   const [skillsTab, setSkillsTab] = useState('technical');
   const [experienceTab, setExperienceTab] = useState('education');
   const [toolsTab, setToolsTab] = useState('All');
+  const [isPlaying, setIsPlaying] = useState(false); // Start paused
   
   const formRef = useRef();
+  const audioRef = useRef(null);
+
+  // --- Music Player Logic ---
+  const toggleMusic = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  // This effect will run once to enable autoplay after the first user interaction
+  useEffect(() => {
+    const enableAutoplay = () => {
+      setIsPlaying(true);
+      document.body.removeEventListener('click', enableAutoplay);
+    };
+    
+    document.body.addEventListener('click', enableAutoplay);
+    
+    return () => {
+      document.body.removeEventListener('click', enableAutoplay);
+    };
+  }, []); // Empty array ensures this effect runs only once
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play().catch(error => {
+        // This catch is a fallback in case the browser is very strict
+        console.log("Audio autoplay was prevented.");
+        setIsPlaying(false);
+      });
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
+  // -------------------------
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -215,6 +249,18 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black ">
+        {/* Audio Player */}
+        <audio ref={audioRef} src="/background-music.mp3" loop />
+
+        {/* Music Control Button */}
+        <button
+          onClick={toggleMusic}
+          className="fixed bottom-5 right-5 z-50 w-12 h-12 bg-red-600/50 text-white rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 hover:bg-red-600 transition-all"
+          aria-label={isPlaying ? 'Pause music' : 'Play music'}
+        >
+          {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+        </button>
+
         <nav className="fixed top-0 z-50 w-full border-b bg-black/20 backdrop-blur-md border-white/10">
             <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
