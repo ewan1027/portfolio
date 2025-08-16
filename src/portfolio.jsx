@@ -189,6 +189,14 @@ const Portfolio = () => {
   ];
 
   const projects = [
+     {
+        title: 'Tuition Management Android App',
+        category: 'Mobile App',
+        description: 'Designed to help tuition centers streamline their operations and enhance learning experiences. This app simplifies student management, attendance tracking, assignment submissions, and much more.',
+        technologies: ['Android Studio', 'Firebase (Firestore, Firebase Storage)', 'QR Code Scanning'],
+        image: 'MAD.png',  // You can replace this with a relevant image for the app
+        github: 'https://github.com/ewan1027/Tuition-Management-App',  // You can update with the actual GitHub link if available
+    },
       {
           title: 'Smart Parcel Box',
           category: 'IoT Project',
