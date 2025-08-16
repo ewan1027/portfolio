@@ -236,7 +236,7 @@ const Portfolio = () => {
       location: "Colombo-06, Sri Lanka"
   };
 
-  const cvUrl = "https://drive.google.com/drive/u/2/home"; 
+  const cvUrl = "https://drive.google.com/file/d/1fvD9wnXCrvmB5bKBJv7TzxEmU618A5gC/view?usp=drive_link"; 
   const profilePicUrl = "https://i.postimg.cc/5N6D10rN/image.jpg";
 
   const [activeCategory, setActiveCategory] = useState('All');
