@@ -195,7 +195,7 @@ const Portfolio = () => {
         description: 'Designed to help tuition centers streamline their operations and enhance learning experiences. This app simplifies student management, attendance tracking, assignment submissions, and much more.',
         technologies: ['Android Studio', 'Firebase (Firestore, Firebase Storage)', 'QR Code Scanning'],
         image: 'MAD.png',  // You can replace this with a relevant image for the app
-        github: 'https://github.com/ewan1027/Tuition-Management-App',  // You can update with the actual GitHub link if available
+        github: 'https://github.com/ewan1027/MAD.git',  // You can update with the actual GitHub link if available
     },
       {
           title: 'Smart Parcel Box',
@@ -244,7 +244,7 @@ const Portfolio = () => {
       location: "Colombo-06, Sri Lanka"
   };
 
-  const cvUrl = "https://drive.google.com/file/d/1fvD9wnXCrvmB5bKBJv7TzxEmU618A5gC/view?usp=drive_link"; 
+  const cvUrl = "https://drive.google.com/file/d/1P06yRlajiRuLEGcUUK2Mn-GHNX7ugcxq/view?usp=drive_link"; 
   const profilePicUrl = "https://i.postimg.cc/5N6D10rN/image.jpg";
 
   const [activeCategory, setActiveCategory] = useState('All');
